@@ -169,7 +169,7 @@ Entry.Robotis_rb_P_Assembly.setLanguage = function () {
         ko: {
             template: {
                 robotis_RB_cm_ir_value: "%1 번 IR 센서 값",
-                robotis_RB_cm_ir_compare: "%1 번 IR 센서 값이 %2  %3이면",
+                robotis_RB_cm_ir_compare: "%1 번 적외선센서 값이 %2 보다 %3",
                 robotis_RB_detectFrontObj: "앞에 물체가 있으면",
                 robotis_RB_cm_btn_value: "%1 버튼이 %2 이면",
                 robotis_RB_cm_joystick_value: "조이스틱 위치가 %1 이면",
@@ -1811,7 +1811,7 @@ Entry.Robotis_rb_P_Assembly.getBlocks = function () {
                 TYPE: 1,
             },
             class: 'robotis_rb100_custom',
-            isNotFor: ['Robotis_rb_H', 'Robotis_rb_car', 'Robotis_rb_P_Assembly'],
+            isNotFor: ['Robotis_rb_H', 'Robotis_rb_P_Assembly'],
             func: function (sprite, script) {
                 var scope = script.executor.scope;
 
