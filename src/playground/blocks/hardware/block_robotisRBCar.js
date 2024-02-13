@@ -76,10 +76,12 @@ Entry.Robotis_rb_car.blockMenuBlocks = [
     'robotis_RCar_drive_simple',
     'robotis_RCar_drive_stop',
     'robotis_RCar_drive_advanced',
+    'robotis_RCar_drive_seperate',
+    'robotis_RCar_drive_angle',
     'robotis_RCar_go_distance',
     'robotis_RCar_turn_angle',
     'robotis_RCar_follow_line',
-    'robotis_RCar_follow_line_stop',
+    //'robotis_RCar_follow_line_stop',
     /*
     'robotis_practice_robot_go',
     'robotis_practice_robot_stop',
@@ -118,7 +120,11 @@ Entry.Robotis_rb_car.blockMenuBlocks = [
     // LCD 제어
     'robotis_RCar_screen',
     'robotis_RCar_anim_screen',
-    'robotis_RCar_rsp_screen',
+    //'robotis_RCar_rsp_screen',
+    'robotis_RCar_icon_screen_food_plant',
+    'robotis_RCar_icon_screen_animal_human',
+    'robotis_RCar_icon_screen_object_tool',
+    'robotis_RCar_icon_screen_vehicle_number',
     'robotis_RCar_text_screen',
     'robotis_RCar_LCDColor',
     'robotis_RCar_LCDBright',
@@ -195,38 +201,44 @@ Entry.Robotis_rb_car.setLanguage = function() {
                 robotis_RCar_distance_compare: "%1 값이 %2보다 %3",
                 robotis_RCar_dxl_value: "%1의 %2값",
 
-                robotis_RCar_scale_simple: "%1 옥타브로 %2 음을 %3로 연주 %4",
-                robotis_RCar_scale_advanced: "%1 옥타브로 %2 음을 %3박자 연주 %4",
+                robotis_RCar_scale_simple: "옥타브%1 로 %2 음을 %3로 연주하기 %4",
+                robotis_RCar_scale_advanced: "옥타브%1 로 %2 음을 %3박자 연주하기 %4",
                 robotis_RCar_rest_simple: "%1 %2",
-                robotis_RCar_rest_advanced: "%1 박자 쉼표 %2",
+                robotis_RCar_rest_advanced: "쉼표 %1 박자 %2",
                 robotis_RCar_beat_per_minute: "연주 빠르기를 %1 (으)로 정하기 %2",
-                robotis_RCar_screen: "알라 화면 표정을 %1 %2 (으)로 선택 %3",
-                robotis_RCar_anim_screen: "알라 화면 애니메이션을 %1 %2 (으)로 선택 %3",
+                robotis_RCar_screen: "화면 표정을 %1 %2 (으)로 선택 %3",
+                robotis_RCar_anim_screen: "화면 애니메이션을 %1 %2 (으)로 선택 %3",
 
-                robotis_RCar_rsp_screen: "알라 화면에 %1를 (%2, %3)위치에 %4 크기로 보여주기 %5",
-                robotis_RCar_text_screen: "알라 화면에 %1를 (%2, %3)위치에 %4 로 %5으로 보여주기 %6",
-                robotis_RCar_LCDBright: "알라 화면 밝기를 %1 (으)로 정하기 %2",
-                robotis_RCar_LCDColor: "알라 화면 색상을 %1 (으)로 정하기 %2",
+                robotis_RCar_rsp_screen: "화면에 %1를 (%2, %3)위치에 %4 크기로 보여주기 %5",
+                robotis_RCar_icon_screen_food_plant: "화면에 [음식/식물]중 %1를 (%2, %3)위치에 %4 크기로 표시 %5",
+                robotis_RCar_icon_screen_animal_human: "화면에 [동물/사람]중 %1를 (%2, %3)위치에 %4 크기로 표시 %5",
+                robotis_RCar_icon_screen_object_tool: "화면에 [물건/도구]중 %1를 (%2, %3)위치에 %4 크기로 표시 %5",
+                robotis_RCar_icon_screen_vehicle_number: "화면에 [탈것/숫자]중 %1를 (%2, %3)위치에 %4 크기로 표시 %5",
+                robotis_RCar_text_screen: "화면에 %1를 (%2, %3)위치에 %4 로 %5으로 보여주기 %6",
+                robotis_RCar_LCDBright: "화면 밝기를 %1 (으)로 정하기 %2",
+                robotis_RCar_LCDColor: "화면 색상을 %1 (으)로 정하기 %2",
                 
-                robotis_RB_LEDBright: "알라 %1 LED 밝기를 %2(으)로 정하기 %3",
-                robotis_RCar_cm_led: "알라 %1 LED %2 %3",
+                robotis_RB_LEDBright: "%1 LED 밝기를 %2(으)로 정하기 %3",
+                robotis_RCar_cm_led: "%1 LED %2 %3",
 
-                robotis_RCar_Hello: "알라가 %1 말하기 %2",
-                robotis_RCar_effectSound: "알라가 효과음 %1 재생하기 %2",
-                robotis_RCar_record: "알라의 저장위치 %1번에 녹음하기 %2",
-                robotis_RCar_playRecord: "알라의 저장위치 %1번의 소리 재생하기 %2",
+                robotis_RCar_Hello: "%1 말하기 %2",
+                robotis_RCar_effectSound: "효과음 %1 재생하기 %2",
+                robotis_RCar_record: "소리 %1번에 녹음하기 %2",
+                robotis_RCar_playRecord: "소리 %1번울 재생하기 %2",
 
-                robotis_openCM70_RLa_go: "알라 %1 속도로 %2 하기 %3",
-                robotis_openCM70_RLa_stop: "알라 정지하기 %1",
+                robotis_openCM70_RLa_go: "%1 속도로 %2 하기 %3",
+                robotis_openCM70_RLa_stop: "정지하기 %1",
 
                 robotis_RB_rotate:"%1 모터 %2의 속도로 %3 회전하기%4",
                 robotis_RB_rotate_stop:"%1 모터 정지하기 %2",
 
-                robotis_RCar_drive_simple: "알라 %1 속도로 %2 %3",
-                robotis_RCar_drive_stop: "알라 정지 %1",
-                robotis_RCar_drive_advanced: "알라 왼쪽바퀴 %1 속도로 %2 회전, 오른쪽바퀴 %3 속도로 %4 회전 %5",
-                robotis_RCar_go_distance:"알라 로봇 %1 cm %2 하기 %3",
-                robotis_RCar_turn_angle:"알라 로봇 %1 도 %2 하기%3",
+                robotis_RCar_drive_simple: " %1 속도로 %2 %3",
+                robotis_RCar_drive_stop: "정지 %1",
+                robotis_RCar_drive_advanced: "왼쪽바퀴 %1 속도로 %2 회전, 오른쪽바퀴 %3 속도로 %4 회전 %5",
+                robotis_RCar_drive_seperate: "%1 바퀴 %2 속도로 %3 으로 회전하기 %4",
+                robotis_RCar_drive_angle: "%1 바퀴 %2 도만큼 %3 으로 회전하기 %4",
+                robotis_RCar_go_distance:"%1 cm %2 하기 %3",
+                robotis_RCar_turn_angle:"%1 도 %2 하기%3",
                 robotis_RCar_follow_line: "%1 속도로 라인 따라가기 %2",
                 robotis_RCar_follow_line_stop: "라인 따라가기 종료 %1",
                 robotis_RB_pen:"알라 로봇 펜 %1 %2",
@@ -425,6 +437,138 @@ Entry.Robotis_rb_car.setLanguage = function() {
                 robotis_screen1: "가위",
                 robotis_screen2: "바위",
                 robotis_screen3: "보",
+                robotis_icon_food_plant_1: "우유",
+                robotis_icon_food_plant_2: "나무",
+                robotis_icon_food_plant_3: "스프",
+                robotis_icon_food_plant_4: "케익",
+                robotis_icon_food_plant_5: "물",
+                robotis_icon_food_plant_6: "주스",
+                robotis_icon_food_plant_7: "당근",
+                robotis_icon_food_plant_8: "사과",
+                robotis_icon_food_plant_9: "오렌지",
+                robotis_icon_food_plant_10: "고기",
+                robotis_icon_food_plant_11: "화분",
+                robotis_icon_food_plant_12: "장미",
+                robotis_icon_food_plant_13: "포도",
+                robotis_icon_food_plant_14: "감자",
+                robotis_icon_food_plant_15: "사탕",
+                robotis_icon_food_plant_16: "치즈",
+                robotis_icon_food_plant_17: "식빵",
+                robotis_icon_food_plant_18: "꽃들",
+                robotis_icon_food_plant_19: "커피",
+                robotis_icon_food_plant_20: "튤립",
+                robotis_icon_food_plant_21: "바나나",
+                robotis_icon_food_plant_22: "과일들",
+                robotis_icon_food_plant_23: "햄버거",
+                robotis_icon_food_plant_24: "피자",
+                robotis_icon_animal_human_1: "시바견",
+                robotis_icon_animal_human_2: "강아지",
+                robotis_icon_animal_human_3: "곰",
+                robotis_icon_animal_human_4: "새",
+                robotis_icon_animal_human_5: "오리",
+                robotis_icon_animal_human_6: "사자",
+                robotis_icon_animal_human_7: "호랑이",
+                robotis_icon_animal_human_8: "말",
+                robotis_icon_animal_human_9: "양",
+                robotis_icon_animal_human_10: "상어1(왼쪽)",
+                robotis_icon_animal_human_11: "상어1(오른쪽)",
+                robotis_icon_animal_human_12: "상어2(왼쪽)",
+                robotis_icon_animal_human_13: "상어2(오른쪽)",
+                robotis_icon_animal_human_14: "물고기1",
+                robotis_icon_animal_human_15: "물고기2",
+                robotis_icon_animal_human_16: "물고기3",
+                robotis_icon_animal_human_17: "물고기4",
+                robotis_icon_animal_human_18: "원숭이",
+                robotis_icon_animal_human_19: "닭",
+                robotis_icon_animal_human_20: "돼지",
+                robotis_icon_animal_human_21: "사람(살찐)",
+                robotis_icon_animal_human_22: "사람(수영복)",
+                robotis_icon_animal_human_23: "아기",
+                robotis_icon_animal_human_24: "사람(달리는)",
+                robotis_icon_animal_human_25: "사람(노래하는)",
+                robotis_icon_animal_human_26: "사람(앉은)",
+                robotis_icon_animal_human_27: "사람(화난)",
+                robotis_icon_animal_human_28: "사람(만세)",
+                robotis_icon_animal_human_29: "왕",
+                robotis_icon_animal_human_30: "왕자",
+                robotis_icon_animal_human_31: "공주",
+                robotis_icon_animal_human_32: "요리사",
+                robotis_icon_animal_human_33: "의사",
+                robotis_icon_animal_human_34: "간호사",
+                robotis_icon_object_tool_1: "가방",
+                robotis_icon_object_tool_2: "상자",
+                robotis_icon_object_tool_3: "머그컵",
+                robotis_icon_object_tool_4: "모자(Hat)",
+                robotis_icon_object_tool_5: "모자(Cap)",
+                robotis_icon_object_tool_6: "열쇠",
+                robotis_icon_object_tool_7: "장난감",
+                robotis_icon_object_tool_8: "책",
+                robotis_icon_object_tool_9: "곰인형",
+                robotis_icon_object_tool_10: "드럼",
+                robotis_icon_object_tool_11: "메모장",
+                robotis_icon_object_tool_12: "볼펜",
+                robotis_icon_object_tool_13: "책상",
+                robotis_icon_object_tool_14: "테이블",
+                robotis_icon_object_tool_15: "의자",
+                robotis_icon_object_tool_16: "침대",
+                robotis_icon_object_tool_17: "텐트",
+                robotis_icon_object_tool_18: "접시",
+                robotis_icon_object_tool_19: "축구공",
+                robotis_icon_object_tool_20: "종",
+                robotis_icon_object_tool_21: "손목시계",
+                robotis_icon_object_tool_22: "신발",
+                robotis_icon_object_tool_23: "전등",
+                robotis_icon_object_tool_24: "라디오",
+                robotis_icon_object_tool_25: "지폐",
+                robotis_icon_object_tool_26: "자",
+                robotis_icon_object_tool_27: "카메라",
+                robotis_icon_object_tool_28: "스푼",
+                robotis_icon_object_tool_29: "건반",
+                robotis_icon_object_tool_30: "달력",
+                robotis_icon_object_tool_31: "칼",
+                robotis_icon_object_tool_32: "풍선",
+                robotis_icon_object_tool_33: "물통",
+                robotis_icon_object_tool_34: "나무막대(수평)",
+                robotis_icon_object_tool_35: "나무막대(수직)",
+                robotis_icon_object_tool_36: "낚시바늘",
+                robotis_icon_vehicle_number_1: "자동차",
+                robotis_icon_vehicle_number_2: "버스",
+                robotis_icon_vehicle_number_3: "트럭",
+                robotis_icon_vehicle_number_4: "지프",
+                robotis_icon_vehicle_number_5: "자전거",
+                robotis_icon_vehicle_number_6: "전철",
+                robotis_icon_vehicle_number_7: "기차",
+                robotis_icon_vehicle_number_8: "비행기",
+                robotis_icon_vehicle_number_9: "전투기(수직)",
+                robotis_icon_vehicle_number_10: "전투기(수평)",
+                robotis_icon_vehicle_number_11: "로켓",
+                robotis_icon_vehicle_number_12: "돗단배",
+                robotis_icon_vehicle_number_13: "여객선",
+                robotis_icon_vehicle_number_14: "잠수항(왼쪽)",
+                robotis_icon_vehicle_number_15: "잠수함(오른쪽)",
+                robotis_icon_vehicle_number_16: "비행기(왼쪽)",
+                robotis_icon_vehicle_number_17: "비행기(오른쪽)",
+                robotis_icon_vehicle_number_18: "비행기(윗쪽)",
+                robotis_icon_vehicle_number_19: "우주선(왼쪽)",
+                robotis_icon_vehicle_number_20: "우주선(오른쪽)",
+                robotis_icon_vehicle_number_21: "우주선(윗쪽)",
+                robotis_icon_vehicle_number_22: "주사위(1)",
+                robotis_icon_vehicle_number_23: "주사위(2)",
+                robotis_icon_vehicle_number_24: "주사위(3)",
+                robotis_icon_vehicle_number_25: "주사위(4)",
+                robotis_icon_vehicle_number_26: "주사위(5)",
+                robotis_icon_vehicle_number_27: "주사위(6)",
+                robotis_icon_vehicle_number_28: "0",
+                robotis_icon_vehicle_number_29: "1",
+                robotis_icon_vehicle_number_30: "2",
+                robotis_icon_vehicle_number_31: "3",
+                robotis_icon_vehicle_number_32: "4",
+                robotis_icon_vehicle_number_33: "5",
+                robotis_icon_vehicle_number_34: "6",
+                robotis_icon_vehicle_number_35: "7",
+                robotis_icon_vehicle_number_36: "8",
+                robotis_icon_vehicle_number_37: "9",
+                robotis_icon_vehicle_number_38: "10",
                 robotis_clockwise: "시계방향",
                 robotis_counterclockwise: "반시계방향",
                 robotis_up: "들기",
@@ -940,6 +1084,210 @@ Entry.Robotis_rb_car.getBlocks = function() {
             syntax: {
                 js: [],
                 py: ['Robotis.opencm70_RCar_go_advanced(%1, %2)'],
+            },
+        },
+        robotis_RCar_drive_seperate: {
+            color: EntryStatic.colorSet.block.default.HARDWARE,
+            outerLine: EntryStatic.colorSet.block.darken.HARDWARE,
+            skeleton: 'basic',
+            statements: [],
+            params: [
+                {
+                    type: 'Dropdown',
+                    options: [
+                        [Lang.Blocks.robotis_left, '1'],
+                        [Lang.Blocks.robotis_right, '0'],
+                    ],
+                    value: '1',
+                    fontSize: 11,
+                    bgColor: EntryStatic.colorSet.block.darken.HARDWARE,
+                    arrowColor: EntryStatic.colorSet.arrow.default.HARDWARE,
+                },
+                {
+                    type: 'Block',
+                    accept: 'string',
+                },
+                {
+                    type: 'Dropdown',
+                    options: [
+                        [Lang.Blocks.robotis_direction_forward, '1'],
+                        [Lang.Blocks.robotis_direction_backward, '2'],
+                    ],
+                    value: '1',
+                    fontSize: 11,
+                    bgColor: EntryStatic.colorSet.block.darken.HARDWARE,
+                    arrowColor: EntryStatic.colorSet.arrow.default.HARDWARE,
+                },
+                {
+                    type: 'Indicator',
+                    img: 'block_icon/hardware_icon.svg',
+                    size: 12,
+                },
+            ],
+            events: {},
+            def: {
+                params: [
+                    null,
+                    {
+                        type: 'number',
+                        params: ['15'],
+                    },
+                    null,
+                ],
+                type: 'robotis_RCar_drive_seperate',
+            },
+            paramsKeyMap: {
+                WHEEL_SIDE: 0,
+                WHEEL_SPEED: 1,
+                WHEEL_DIRECTION: 2,
+            },
+            class: 'robotis_rb100_move',
+            isNotFor: ['Robotis_rb_car'],
+            func: function (sprite, script) {
+                // instruction / address / length / value / default length
+                let wheelSide = script.getNumberValue('WHEEL_SIDE', script);
+                let wheelSpeed = script.getNumberValue('WHEEL_SPEED', script);
+                let wheelDirection = script.getField('WHEEL_DIRECTION', script);
+                
+                const data_instruction = Entry.Robotis_rb.INSTRUCTION.BYPASS_WRITE;
+                let data_address = 0;
+                let data_length = 2;
+                let id = 33 + wheelSide;
+
+                data_address =
+                    Entry.Robotis_rb.CONTROL_TABLE.DXL_GOAL_VELOCITY[0];
+                data_length =
+                    Entry.Robotis_rb.CONTROL_TABLE.DXL_GOAL_VELOCITY[1];
+
+                if (wheelSpeed < -100) wheelSpeed = -100;
+                else if (wheelSpeed > 100) wheelSpeed = 100;
+
+                if (wheelDirection == '2') {
+                    wheelSpeed = -wheelSpeed;
+                }
+
+                wheelSpeed *= 15;
+
+                var data_sendqueue = [
+                    [
+                        data_instruction,
+                        data_address,
+                        data_length,
+                        id,
+                        wheelSpeed,
+                    ],
+                ];
+                return Entry.Robotis_carCont.postCallReturn(
+                    script,
+                    data_sendqueue,
+                    Entry.Robotis_openCM70.delay
+                );
+            },
+            syntax: {
+                js: [],
+                py: ['Robotis.opencm70_RCar_go_seperate(%1, %2)'],
+            },
+        },
+        robotis_RCar_drive_angle: {
+            color: EntryStatic.colorSet.block.default.HARDWARE,
+            outerLine: EntryStatic.colorSet.block.darken.HARDWARE,
+            skeleton: 'basic',
+            statements: [],
+            params: [
+                {
+                    type: 'Dropdown',
+                    options: [
+                        [Lang.Blocks.robotis_left, '1'],
+                        [Lang.Blocks.robotis_right, '0'],
+                    ],
+                    value: '1',
+                    fontSize: 11,
+                    bgColor: EntryStatic.colorSet.block.darken.HARDWARE,
+                    arrowColor: EntryStatic.colorSet.arrow.default.HARDWARE,
+                },
+                {
+                    type: 'Block',
+                    accept: 'string',
+                },
+                {
+                    type: 'Dropdown',
+                    options: [
+                        [Lang.Blocks.robotis_direction_forward, '1'],
+                        [Lang.Blocks.robotis_direction_backward, '2'],
+                    ],
+                    value: '1',
+                    fontSize: 11,
+                    bgColor: EntryStatic.colorSet.block.darken.HARDWARE,
+                    arrowColor: EntryStatic.colorSet.arrow.default.HARDWARE,
+                },
+                {
+                    type: 'Indicator',
+                    img: 'block_icon/hardware_icon.svg',
+                    size: 12,
+                },
+            ],
+            events: {},
+            def: {
+                params: [
+                    null,
+                    {
+                        type: 'number',
+                        params: ['15'],
+                    },
+                    null,
+                ],
+                type: 'robotis_RCar_drive_angle',
+            },
+            paramsKeyMap: {
+                WHEEL_SIDE: 0,
+                WHEEL_SPEED: 1,
+                WHEEL_DIRECTION: 2,
+            },
+            class: 'robotis_rb100_move',
+            isNotFor: ['Robotis_rb_car'],
+            func: function (sprite, script) {
+                // instruction / address / length / value / default length
+                let wheelSide = script.getNumberValue('WHEEL_SIDE', script);
+                let wheelSpeed = script.getNumberValue('WHEEL_SPEED', script);
+                let wheelDirection = script.getField('WHEEL_DIRECTION', script);
+                
+                const data_instruction = Entry.Robotis_rb.INSTRUCTION.BYPASS_WRITE;
+                let data_address = 0;
+                let data_length = 2;
+                let id = 33 + wheelSide;
+
+                data_address =
+                    Entry.Robotis_rb.CONTROL_TABLE.DXL_GOAL_VELOCITY[0];
+                data_length =
+                    Entry.Robotis_rb.CONTROL_TABLE.DXL_GOAL_VELOCITY[1];
+
+                if (wheelSpeed < -100) wheelSpeed = -100;
+                else if (wheelSpeed > 100) wheelSpeed = 100;
+
+                if (wheelDirection == '2') {
+                    wheelSpeed = -wheelSpeed;
+                }
+
+                wheelSpeed *= 15;
+
+                var data_sendqueue = [
+                    [
+                        data_instruction,
+                        data_address,
+                        data_length,
+                        id,
+                        wheelSpeed,
+                    ],
+                ];
+                return Entry.Robotis_carCont.postCallReturn(
+                    script,
+                    data_sendqueue,
+                    Entry.Robotis_openCM70.delay
+                );
+            },
+            syntax: {
+                js: [],
+                py: ['Robotis.opencm70_RCar_go_angle(%1, %2)'],
             },
         },
         robotis_RCar_go_distance: {
@@ -2619,8 +2967,8 @@ Entry.Robotis_rb_car.getBlocks = function() {
                 {
                     type: 'Dropdown',
                     options: [
-                        [Lang.Blocks.robotis_rgee, '0'],
                         [Lang.Blocks.robotis_rla, '1'],
+                        [Lang.Blocks.robotis_rgee, '0'],
                         [Lang.Blocks.robotis_kkokdu, '2'],
                     ],
                     value: '1',
@@ -2713,8 +3061,8 @@ Entry.Robotis_rb_car.getBlocks = function() {
                 {
                     type: 'Dropdown',
                     options: [
-                        [Lang.Blocks.robotis_rgee, '0'],
                         [Lang.Blocks.robotis_rla, '1'],
+                        [Lang.Blocks.robotis_rgee, '0'],
                         [Lang.Blocks.robotis_kkokdu, '2'],
                     ],
                     value: '1',
@@ -2860,6 +3208,614 @@ Entry.Robotis_rb_car.getBlocks = function() {
                     null,
                 ],
                 type: 'robotis_RCar_rsp_screen',
+            },
+            paramsKeyMap: {
+                ICON: 0,
+                X: 1,
+                Y: 2,
+                SIZE: 3,
+            },
+            class: 'robotis_rb100_lcd',
+            isNotFor: ['Robotis_rb_car'],
+            func: function (sprite, script) {
+                // instruction / address / length / value / default length
+                var iconNum = script.getField('ICON', script);
+                var x = script.getNumberValue('X', script);
+                var y = script.getNumberValue('Y', script);
+                var size = script.getNumberValue('SIZE', script) * 2;
+                
+                var data_instruction = Entry.Robotis_rb.INSTRUCTION.WRITE;
+                var data_address = 166;
+                var data_length = 2;
+                var data_value = 10496;
+            
+                if (x < -160) x = -160;
+                else if (x > 160) x = 160;
+                
+                if (y < -120) y = -120;
+                else if (y > 120) y = 120;
+                
+                if (size < 0) size = 0;
+                else if (size > 400) size = 400;
+               
+                data_value = iconNum;
+
+                var data_sendqueue = [
+                    // [
+                    //     Entry.Robotis_rb.INSTRUCTION.WRITE, 163, 2, 2817
+                    // ],
+                    [
+                        Entry.Robotis_rb.INSTRUCTION.WRITE, 163, 2, 255
+                    ],
+                    [
+                        Entry.Robotis_rb.INSTRUCTION.WRITE, 130, 2, x
+                    ],
+                    [
+                        Entry.Robotis_rb.INSTRUCTION.WRITE, 132, 2, y
+                    ],
+                    [
+                        Entry.Robotis_rb.INSTRUCTION.WRITE, 149, 2, size
+                    ],
+                    [
+                        data_instruction,
+                        data_address,
+                        data_length,
+                        data_value,
+                    ],
+                    [
+                        Entry.Robotis_rb.INSTRUCTION.WRITE, 162, 1, 1
+                    ]
+                ];
+                
+                return Entry.Robotis_carCont.postCallReturn(
+                    script,
+                    data_sendqueue,
+                    Entry.Robotis_openCM70.delay + 100
+                );
+            },
+            syntax: {
+                js: [],
+                py: ['Robotis.RB_rsp_screen(%1,%2,%3,%4)'],
+            },
+        },
+        robotis_RCar_icon_screen_food_plant: {
+            color: EntryStatic.colorSet.block.default.HARDWARE,
+            outerLine: EntryStatic.colorSet.block.darken.HARDWARE,
+            skeleton: 'basic',
+            statements: [],
+            params: [
+                {
+                    type: 'Dropdown',
+                    options: [
+                        [Lang.Blocks.robotis_icon_food_plant_1, '10496'],
+                        [Lang.Blocks.robotis_icon_food_plant_2, '10497'],
+                        [Lang.Blocks.robotis_icon_food_plant_3, '10498'],
+                        [Lang.Blocks.robotis_icon_food_plant_4, '10499'],
+                        [Lang.Blocks.robotis_icon_food_plant_5, '10500'],
+                        [Lang.Blocks.robotis_icon_food_plant_6, '10501'],
+                        [Lang.Blocks.robotis_icon_food_plant_7, '10502'],
+                        [Lang.Blocks.robotis_icon_food_plant_8, '10503'],
+                        [Lang.Blocks.robotis_icon_food_plant_9, '10504'],
+                        [Lang.Blocks.robotis_icon_food_plant_10, '10505'],
+                        [Lang.Blocks.robotis_icon_food_plant_11, '10506'],
+                        [Lang.Blocks.robotis_icon_food_plant_12, '10507'],
+                        [Lang.Blocks.robotis_icon_food_plant_13, '10508'],
+                        [Lang.Blocks.robotis_icon_food_plant_14, '10509'],
+                        [Lang.Blocks.robotis_icon_food_plant_15, '10510'],
+                        [Lang.Blocks.robotis_icon_food_plant_16, '10511'],
+                        [Lang.Blocks.robotis_icon_food_plant_17, '10512'],
+                        [Lang.Blocks.robotis_icon_food_plant_18, '10513'],
+                        [Lang.Blocks.robotis_icon_food_plant_19, '10514'],
+                        [Lang.Blocks.robotis_icon_food_plant_20, '10515'],
+                        [Lang.Blocks.robotis_icon_food_plant_21, '10516'],
+                        [Lang.Blocks.robotis_icon_food_plant_22, '10517'],
+                        [Lang.Blocks.robotis_icon_food_plant_23, '10518'],
+                        [Lang.Blocks.robotis_icon_food_plant_24, '10519'],
+                    ],
+                    value: '10496',
+                    fontSize: 11,
+                    bgColor: EntryStatic.colorSet.block.darken.HARDWARE,
+                    arrowColor: EntryStatic.colorSet.arrow.default.HARDWARE,
+                },
+                {
+                    type: 'Block',
+                    accept: 'string',
+                },
+                {
+                    type: 'Block',
+                    accept: 'string',
+                },
+                {
+                    type: 'Block',
+                    accept: 'string',
+                },
+                {
+                    type: 'Indicator',
+                    img: 'block_icon/hardware_icon.svg',
+                    size: 12,
+                },
+            ],
+            events: {},
+            def: {
+                params: [
+                    null,
+                    {
+                        type: 'number',
+                        params: ['0'],
+                    },
+                    {
+                        type: 'number',
+                        params: ['0'],
+                    },
+                    50,
+                    null,
+                ],
+                type: 'robotis_RCar_icon_screen_food_plant',
+            },
+            paramsKeyMap: {
+                ICON: 0,
+                X: 1,
+                Y: 2,
+                SIZE: 3,
+            },
+            class: 'robotis_rb100_lcd',
+            isNotFor: ['Robotis_rb_car'],
+            func: function (sprite, script) {
+                // instruction / address / length / value / default length
+                var iconNum = script.getField('ICON', script);
+                var x = script.getNumberValue('X', script);
+                var y = script.getNumberValue('Y', script);
+                var size = script.getNumberValue('SIZE', script) * 2;
+                
+                var data_instruction = Entry.Robotis_rb.INSTRUCTION.WRITE;
+                var data_address = 166;
+                var data_length = 2;
+                var data_value = 10496;
+            
+                if (x < -160) x = -160;
+                else if (x > 160) x = 160;
+                
+                if (y < -120) y = -120;
+                else if (y > 120) y = 120;
+                
+                if (size < 0) size = 0;
+                else if (size > 400) size = 400;
+               
+                data_value = iconNum;
+
+                var data_sendqueue = [
+                    // [
+                    //     Entry.Robotis_rb.INSTRUCTION.WRITE, 163, 2, 2817
+                    // ],
+                    [
+                        Entry.Robotis_rb.INSTRUCTION.WRITE, 163, 2, 255
+                    ],
+                    [
+                        Entry.Robotis_rb.INSTRUCTION.WRITE, 130, 2, x
+                    ],
+                    [
+                        Entry.Robotis_rb.INSTRUCTION.WRITE, 132, 2, y
+                    ],
+                    [
+                        Entry.Robotis_rb.INSTRUCTION.WRITE, 149, 2, size
+                    ],
+                    [
+                        data_instruction,
+                        data_address,
+                        data_length,
+                        data_value,
+                    ],
+                    [
+                        Entry.Robotis_rb.INSTRUCTION.WRITE, 162, 1, 1
+                    ]
+                ];
+                
+                return Entry.Robotis_carCont.postCallReturn(
+                    script,
+                    data_sendqueue,
+                    Entry.Robotis_openCM70.delay + 100
+                );
+            },
+            syntax: {
+                js: [],
+                py: ['Robotis.RB_rsp_screen(%1,%2,%3,%4)'],
+            },
+        },
+        robotis_RCar_icon_screen_animal_human: {
+            color: EntryStatic.colorSet.block.default.HARDWARE,
+            outerLine: EntryStatic.colorSet.block.darken.HARDWARE,
+            skeleton: 'basic',
+            statements: [],
+            params: [
+                {
+                    type: 'Dropdown',
+                    options: [
+                        [Lang.Blocks.robotis_icon_animal_human_1, '10752'],
+                        [Lang.Blocks.robotis_icon_animal_human_2, '10753'],
+                        [Lang.Blocks.robotis_icon_animal_human_3, '10754'],
+                        [Lang.Blocks.robotis_icon_animal_human_4, '10755'],
+                        [Lang.Blocks.robotis_icon_animal_human_5, '10756'],
+                        [Lang.Blocks.robotis_icon_animal_human_6, '10757'],
+                        [Lang.Blocks.robotis_icon_animal_human_7, '10758'],
+                        [Lang.Blocks.robotis_icon_animal_human_8, '10759'],
+                        [Lang.Blocks.robotis_icon_animal_human_9, '10760'],
+                        [Lang.Blocks.robotis_icon_animal_human_10, '11787'],
+                        [Lang.Blocks.robotis_icon_animal_human_11, '11788'],
+                        [Lang.Blocks.robotis_icon_animal_human_12, '11789'],
+                        [Lang.Blocks.robotis_icon_animal_human_13, '11790'],
+                        [Lang.Blocks.robotis_icon_animal_human_14, '11805'],
+                        [Lang.Blocks.robotis_icon_animal_human_15, '11806'],
+                        [Lang.Blocks.robotis_icon_animal_human_16, '11807'],
+                        [Lang.Blocks.robotis_icon_animal_human_17, '11808'],
+                        [Lang.Blocks.robotis_icon_animal_human_18, '10761'],
+                        [Lang.Blocks.robotis_icon_animal_human_19, '10762'],
+                        [Lang.Blocks.robotis_icon_animal_human_20, '10763'],
+                        [Lang.Blocks.robotis_icon_animal_human_21, '10764'],
+                        [Lang.Blocks.robotis_icon_animal_human_22, '10765'],
+                        [Lang.Blocks.robotis_icon_animal_human_23, '10766'],
+                        [Lang.Blocks.robotis_icon_animal_human_24, '10767'],
+                        [Lang.Blocks.robotis_icon_animal_human_25, '10768'],
+                        [Lang.Blocks.robotis_icon_animal_human_26, '10769'],
+                        [Lang.Blocks.robotis_icon_animal_human_27, '10770'],
+                        [Lang.Blocks.robotis_icon_animal_human_28, '10771'],
+                        [Lang.Blocks.robotis_icon_animal_human_29, '10772'],
+                        [Lang.Blocks.robotis_icon_animal_human_30, '10773'],
+                        [Lang.Blocks.robotis_icon_animal_human_31, '10774'],
+                        [Lang.Blocks.robotis_icon_animal_human_32, '10775'],
+                        [Lang.Blocks.robotis_icon_animal_human_33, '10776'],
+                        [Lang.Blocks.robotis_icon_animal_human_34, '10777'],
+                    ],
+                    value: '10752',
+                    fontSize: 11,
+                    bgColor: EntryStatic.colorSet.block.darken.HARDWARE,
+                    arrowColor: EntryStatic.colorSet.arrow.default.HARDWARE,
+                },
+                {
+                    type: 'Block',
+                    accept: 'string',
+                },
+                {
+                    type: 'Block',
+                    accept: 'string',
+                },
+                {
+                    type: 'Block',
+                    accept: 'string',
+                },
+                {
+                    type: 'Indicator',
+                    img: 'block_icon/hardware_icon.svg',
+                    size: 12,
+                },
+            ],
+            events: {},
+            def: {
+                params: [
+                    null,
+                    {
+                        type: 'number',
+                        params: ['0'],
+                    },
+                    {
+                        type: 'number',
+                        params: ['0'],
+                    },
+                    50,
+                    null,
+                ],
+                type: 'robotis_RCar_icon_screen_animal_human',
+            },
+            paramsKeyMap: {
+                ICON: 0,
+                X: 1,
+                Y: 2,
+                SIZE: 3,
+            },
+            class: 'robotis_rb100_lcd',
+            isNotFor: ['Robotis_rb_car'],
+            func: function (sprite, script) {
+                // instruction / address / length / value / default length
+                var iconNum = script.getField('ICON', script);
+                var x = script.getNumberValue('X', script);
+                var y = script.getNumberValue('Y', script);
+                var size = script.getNumberValue('SIZE', script) * 2;
+                
+                var data_instruction = Entry.Robotis_rb.INSTRUCTION.WRITE;
+                var data_address = 166;
+                var data_length = 2;
+                var data_value = 10496;
+            
+                if (x < -160) x = -160;
+                else if (x > 160) x = 160;
+                
+                if (y < -120) y = -120;
+                else if (y > 120) y = 120;
+                
+                if (size < 0) size = 0;
+                else if (size > 400) size = 400;
+               
+                data_value = iconNum;
+
+                var data_sendqueue = [
+                    // [
+                    //     Entry.Robotis_rb.INSTRUCTION.WRITE, 163, 2, 2817
+                    // ],
+                    [
+                        Entry.Robotis_rb.INSTRUCTION.WRITE, 163, 2, 255
+                    ],
+                    [
+                        Entry.Robotis_rb.INSTRUCTION.WRITE, 130, 2, x
+                    ],
+                    [
+                        Entry.Robotis_rb.INSTRUCTION.WRITE, 132, 2, y
+                    ],
+                    [
+                        Entry.Robotis_rb.INSTRUCTION.WRITE, 149, 2, size
+                    ],
+                    [
+                        data_instruction,
+                        data_address,
+                        data_length,
+                        data_value,
+                    ],
+                    [
+                        Entry.Robotis_rb.INSTRUCTION.WRITE, 162, 1, 1
+                    ]
+                ];
+                
+                return Entry.Robotis_carCont.postCallReturn(
+                    script,
+                    data_sendqueue,
+                    Entry.Robotis_openCM70.delay + 100
+                );
+            },
+            syntax: {
+                js: [],
+                py: ['Robotis.RB_rsp_screen(%1,%2,%3,%4)'],
+            },
+        },
+        robotis_RCar_icon_screen_object_tool: {
+            color: EntryStatic.colorSet.block.default.HARDWARE,
+            outerLine: EntryStatic.colorSet.block.darken.HARDWARE,
+            skeleton: 'basic',
+            statements: [],
+            params: [
+                {
+                    type: 'Dropdown',
+                    options: [
+                        [Lang.Blocks.robotis_icon_object_tool_1, '11008'],
+                        [Lang.Blocks.robotis_icon_object_tool_2, '11009'],
+                        [Lang.Blocks.robotis_icon_object_tool_3, '11010'],
+                        [Lang.Blocks.robotis_icon_object_tool_4, '11011'],
+                        [Lang.Blocks.robotis_icon_object_tool_5, '11012'],
+                        [Lang.Blocks.robotis_icon_object_tool_6, '11013'],
+                        [Lang.Blocks.robotis_icon_object_tool_7, '11014'],
+                        [Lang.Blocks.robotis_icon_object_tool_8, '11015'],
+                        [Lang.Blocks.robotis_icon_object_tool_9, '11016'],
+                        [Lang.Blocks.robotis_icon_object_tool_10, '11017'],
+                        [Lang.Blocks.robotis_icon_object_tool_11, '11018'],
+                        [Lang.Blocks.robotis_icon_object_tool_12, '11019'],
+                        [Lang.Blocks.robotis_icon_object_tool_13, '11020'],
+                        [Lang.Blocks.robotis_icon_object_tool_14, '11021'],
+                        [Lang.Blocks.robotis_icon_object_tool_15, '11022'],
+                        [Lang.Blocks.robotis_icon_object_tool_16, '11023'],
+                        [Lang.Blocks.robotis_icon_object_tool_17, '11024'],
+                        [Lang.Blocks.robotis_icon_object_tool_18, '11025'],
+                        [Lang.Blocks.robotis_icon_object_tool_19, '11026'],
+                        [Lang.Blocks.robotis_icon_object_tool_20, '11027'],
+                        [Lang.Blocks.robotis_icon_object_tool_21, '11028'],
+                        [Lang.Blocks.robotis_icon_object_tool_22, '11029'],
+                        [Lang.Blocks.robotis_icon_object_tool_23, '11030'],
+                        [Lang.Blocks.robotis_icon_object_tool_24, '11031'],
+                        [Lang.Blocks.robotis_icon_object_tool_25, '11032'],
+                        [Lang.Blocks.robotis_icon_object_tool_26, '11033'],
+                        [Lang.Blocks.robotis_icon_object_tool_27, '11034'],
+                        [Lang.Blocks.robotis_icon_object_tool_28, '11035'],
+                        [Lang.Blocks.robotis_icon_object_tool_29, '11036'],
+                        [Lang.Blocks.robotis_icon_object_tool_30, '11037'],
+                        [Lang.Blocks.robotis_icon_object_tool_31, '11038'],
+                        [Lang.Blocks.robotis_icon_object_tool_32, '11039'],
+                        [Lang.Blocks.robotis_icon_object_tool_33, '11040'],
+                        [Lang.Blocks.robotis_icon_object_tool_34, '11801'],
+                        [Lang.Blocks.robotis_icon_object_tool_35, '11802'],
+                        [Lang.Blocks.robotis_icon_object_tool_36, '11809'],
+                    ],
+                    value: '11008',
+                    fontSize: 11,
+                    bgColor: EntryStatic.colorSet.block.darken.HARDWARE,
+                    arrowColor: EntryStatic.colorSet.arrow.default.HARDWARE,
+                },
+                {
+                    type: 'Block',
+                    accept: 'string',
+                },
+                {
+                    type: 'Block',
+                    accept: 'string',
+                },
+                {
+                    type: 'Block',
+                    accept: 'string',
+                },
+                {
+                    type: 'Indicator',
+                    img: 'block_icon/hardware_icon.svg',
+                    size: 12,
+                },
+            ],
+            events: {},
+            def: {
+                params: [
+                    null,
+                    {
+                        type: 'number',
+                        params: ['0'],
+                    },
+                    {
+                        type: 'number',
+                        params: ['0'],
+                    },
+                    50,
+                    null,
+                ],
+                type: 'robotis_RCar_icon_screen_object_tool',
+            },
+            paramsKeyMap: {
+                ICON: 0,
+                X: 1,
+                Y: 2,
+                SIZE: 3,
+            },
+            class: 'robotis_rb100_lcd',
+            isNotFor: ['Robotis_rb_car'],
+            func: function (sprite, script) {
+                // instruction / address / length / value / default length
+                var iconNum = script.getField('ICON', script);
+                var x = script.getNumberValue('X', script);
+                var y = script.getNumberValue('Y', script);
+                var size = script.getNumberValue('SIZE', script) * 2;
+                
+                var data_instruction = Entry.Robotis_rb.INSTRUCTION.WRITE;
+                var data_address = 166;
+                var data_length = 2;
+                var data_value = 10496;
+            
+                if (x < -160) x = -160;
+                else if (x > 160) x = 160;
+                
+                if (y < -120) y = -120;
+                else if (y > 120) y = 120;
+                
+                if (size < 0) size = 0;
+                else if (size > 400) size = 400;
+               
+                data_value = iconNum;
+
+                var data_sendqueue = [
+                    // [
+                    //     Entry.Robotis_rb.INSTRUCTION.WRITE, 163, 2, 2817
+                    // ],
+                    [
+                        Entry.Robotis_rb.INSTRUCTION.WRITE, 163, 2, 255
+                    ],
+                    [
+                        Entry.Robotis_rb.INSTRUCTION.WRITE, 130, 2, x
+                    ],
+                    [
+                        Entry.Robotis_rb.INSTRUCTION.WRITE, 132, 2, y
+                    ],
+                    [
+                        Entry.Robotis_rb.INSTRUCTION.WRITE, 149, 2, size
+                    ],
+                    [
+                        data_instruction,
+                        data_address,
+                        data_length,
+                        data_value,
+                    ],
+                    [
+                        Entry.Robotis_rb.INSTRUCTION.WRITE, 162, 1, 1
+                    ]
+                ];
+                
+                return Entry.Robotis_carCont.postCallReturn(
+                    script,
+                    data_sendqueue,
+                    Entry.Robotis_openCM70.delay + 100
+                );
+            },
+            syntax: {
+                js: [],
+                py: ['Robotis.RB_rsp_screen(%1,%2,%3,%4)'],
+            },
+        },
+        robotis_RCar_icon_screen_vehicle_number: {
+            color: EntryStatic.colorSet.block.default.HARDWARE,
+            outerLine: EntryStatic.colorSet.block.darken.HARDWARE,
+            skeleton: 'basic',
+            statements: [],
+            params: [
+                {
+                    type: 'Dropdown',
+                    options: [
+                        [Lang.Blocks.robotis_icon_vehicle_number_1, '11264'],
+                        [Lang.Blocks.robotis_icon_vehicle_number_2, '11265'],
+                        [Lang.Blocks.robotis_icon_vehicle_number_3, '11266'],
+                        [Lang.Blocks.robotis_icon_vehicle_number_4, '11267'],
+                        [Lang.Blocks.robotis_icon_vehicle_number_5, '11268'],
+                        [Lang.Blocks.robotis_icon_vehicle_number_6, '11269'],
+                        [Lang.Blocks.robotis_icon_vehicle_number_7, '11270'],
+                        [Lang.Blocks.robotis_icon_vehicle_number_8, '11271'],
+                        [Lang.Blocks.robotis_icon_vehicle_number_9, '11272'],
+                        [Lang.Blocks.robotis_icon_vehicle_number_10, '11273'],
+                        [Lang.Blocks.robotis_icon_vehicle_number_11, '11274'],
+                        [Lang.Blocks.robotis_icon_vehicle_number_12, '11275'],
+                        [Lang.Blocks.robotis_icon_vehicle_number_13, '11276'],
+                        [Lang.Blocks.robotis_icon_vehicle_number_14, '11776'],
+                        [Lang.Blocks.robotis_icon_vehicle_number_15, '11777'],
+                        [Lang.Blocks.robotis_icon_vehicle_number_16, '11778'],
+                        [Lang.Blocks.robotis_icon_vehicle_number_17, '11779'],
+                        [Lang.Blocks.robotis_icon_vehicle_number_18, '11780'],
+                        [Lang.Blocks.robotis_icon_vehicle_number_19, '11781'],
+                        [Lang.Blocks.robotis_icon_vehicle_number_20, '11782'],
+                        [Lang.Blocks.robotis_icon_vehicle_number_21, '11783'],
+                        [Lang.Blocks.robotis_icon_vehicle_number_22, '11277'],
+                        [Lang.Blocks.robotis_icon_vehicle_number_23, '11278'],
+                        [Lang.Blocks.robotis_icon_vehicle_number_24, '11279'],
+                        [Lang.Blocks.robotis_icon_vehicle_number_25, '11280'],
+                        [Lang.Blocks.robotis_icon_vehicle_number_26, '11281'],
+                        [Lang.Blocks.robotis_icon_vehicle_number_27, '11282'],
+                        [Lang.Blocks.robotis_icon_vehicle_number_28, '11283'],
+                        [Lang.Blocks.robotis_icon_vehicle_number_29, '11284'],
+                        [Lang.Blocks.robotis_icon_vehicle_number_30, '11285'],
+                        [Lang.Blocks.robotis_icon_vehicle_number_31, '11286'],
+                        [Lang.Blocks.robotis_icon_vehicle_number_32, '11287'],
+                        [Lang.Blocks.robotis_icon_vehicle_number_33, '11288'],
+                        [Lang.Blocks.robotis_icon_vehicle_number_34, '11289'],
+                        [Lang.Blocks.robotis_icon_vehicle_number_35, '11290'],
+                        [Lang.Blocks.robotis_icon_vehicle_number_36, '11291'],
+                        [Lang.Blocks.robotis_icon_vehicle_number_37, '11292'],
+                        [Lang.Blocks.robotis_icon_vehicle_number_38, '11293'],
+                    ],
+                    value: '11264',
+                    fontSize: 11,
+                    bgColor: EntryStatic.colorSet.block.darken.HARDWARE,
+                    arrowColor: EntryStatic.colorSet.arrow.default.HARDWARE,
+                },
+                {
+                    type: 'Block',
+                    accept: 'string',
+                },
+                {
+                    type: 'Block',
+                    accept: 'string',
+                },
+                {
+                    type: 'Block',
+                    accept: 'string',
+                },
+                {
+                    type: 'Indicator',
+                    img: 'block_icon/hardware_icon.svg',
+                    size: 12,
+                },
+            ],
+            events: {},
+            def: {
+                params: [
+                    null,
+                    {
+                        type: 'number',
+                        params: ['0'],
+                    },
+                    {
+                        type: 'number',
+                        params: ['0'],
+                    },
+                    50,
+                    null,
+                ],
+                type: 'robotis_RCar_icon_screen_vehicle_number',
             },
             paramsKeyMap: {
                 ICON: 0,
