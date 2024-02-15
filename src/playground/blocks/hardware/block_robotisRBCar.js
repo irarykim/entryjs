@@ -81,6 +81,7 @@ Entry.Robotis_rb_car.blockMenuBlocks = [
     'robotis_RCar_go_distance',
     'robotis_RCar_turn_angle',
     'robotis_RCar_follow_line',
+    'robotis_RCar_turn_at_line',
     //'robotis_RCar_follow_line_stop',
     /*
     'robotis_practice_robot_go',
@@ -98,6 +99,7 @@ Entry.Robotis_rb_car.blockMenuBlocks = [
     'robotis_RCar_detectSound_compare',
     'robotis_RCar_imu',
     'robotis_RCar_roll_pitch', 
+    'robotis_RCar_line_cross_compare',
     /*
     'robotis_RCar_environment_value',
     'robotis_RCar_environment_compare',
@@ -126,6 +128,8 @@ Entry.Robotis_rb_car.blockMenuBlocks = [
     'robotis_RCar_icon_screen_object_tool',
     'robotis_RCar_icon_screen_vehicle_number',
     'robotis_RCar_text_screen',
+    'robotis_RCar_pixel',
+    'robotis_RCar_text_screen_redraw',
     'robotis_RCar_LCDColor',
     'robotis_RCar_LCDBright',
 
@@ -200,6 +204,7 @@ Entry.Robotis_rb_car.setLanguage = function() {
                 robotis_RCar_distance_value: "%1 값",
                 robotis_RCar_distance_compare: "%1 값이 %2보다 %3",
                 robotis_RCar_dxl_value: "%1의 %2값",
+                robotis_RCar_line_cross_compare: "교차로 모양이 %1이면",
 
                 robotis_RCar_scale_simple: "옥타브%1 로 %2 음을 %3로 연주하기 %4",
                 robotis_RCar_scale_advanced: "옥타브%1 로 %2 음을 %3박자 연주하기 %4",
@@ -214,7 +219,9 @@ Entry.Robotis_rb_car.setLanguage = function() {
                 robotis_RCar_icon_screen_animal_human: "화면에 [동물/사람]중 %1를 (%2, %3)위치에 %4 크기로 표시 %5",
                 robotis_RCar_icon_screen_object_tool: "화면에 [물건/도구]중 %1를 (%2, %3)위치에 %4 크기로 표시 %5",
                 robotis_RCar_icon_screen_vehicle_number: "화면에 [탈것/숫자]중 %1를 (%2, %3)위치에 %4 크기로 표시 %5",
-                robotis_RCar_text_screen: "화면에 %1를 (%2, %3)위치에 %4 로 %5으로 보여주기 %6",
+                robotis_RCar_text_screen: "화면에 %1를 (%2, %3)위치에 %4 로 %5으로 표시 %6",
+                robotis_RCar_pixel: "화면에 (%1, %2)위치에 %3 색 점 표시 %4",
+                robotis_RCar_text_screen_redraw: "화면에 %1를 (%2, %3)위치에 %4으로 새로 표시 %5",
                 robotis_RCar_LCDBright: "화면 밝기를 %1 (으)로 정하기 %2",
                 robotis_RCar_LCDColor: "화면 색상을 %1 (으)로 정하기 %2",
                 
@@ -241,6 +248,7 @@ Entry.Robotis_rb_car.setLanguage = function() {
                 robotis_RCar_turn_angle:"%1 도 %2 하기%3",
                 robotis_RCar_follow_line: "%1 속도로 라인 따라가기 %2",
                 robotis_RCar_follow_line_stop: "라인 따라가기 종료 %1",
+                robotis_RCar_turn_at_line: "라인에서 %1 하기 %2",
                 robotis_RB_pen:"알라 로봇 펜 %1 %2",
                 
                 robotis_RCar_huskylens_block_value_closest_to_center: "허스키렌즈: 화면 중앙과 가장 가까운 사각형의 %1",
@@ -401,6 +409,7 @@ Entry.Robotis_rb_car.setLanguage = function() {
                 robotis_moveR: "우회전",
                 robotis_moveL_in_place: "제자리 좌회전",
                 robotis_moveR_in_place: "제자리 우회전",
+                robotis_moveU_in_place: "제자리 U턴",
                 robotis_moveRG1: "일어서기",
                 robotis_moveRG2: "앉기",
                 robotis_moveRG3: "발버둥",
@@ -605,6 +614,16 @@ Entry.Robotis_rb_car.setLanguage = function() {
                 robotis_beat_rest_dotted_half_note: "점2분쉼표 (𝄼˙)",
                 robotis_beat_rest_whole_note: "온쉼표 (𝄻)",
                 robotis_beat_rest_dotted_note: "점온쉼표 (𝄻˙)",
+                robotis_line_cross_type_0: "|",
+                robotis_line_cross_type_1: " (공백)",
+                robotis_line_cross_type_5: "🞣",
+                robotis_line_cross_type_6: "⏉",
+                robotis_line_cross_type_7: "⊣",
+                robotis_line_cross_type_8: "⊢",
+                robotis_line_cross_type_9: "⏋",
+                robotis_line_cross_type_10: "⎾",
+                robotis_line_cross_type_11: "¦",
+                robotis_line_cross_type_12: "︙",
             },
         },
         en: {
@@ -1483,6 +1502,71 @@ Entry.Robotis_rb_car.getBlocks = function() {
                     null,
                 ],
                 type: 'robotis_RCar_follow_line',
+            },
+            paramsKeyMap: {
+                SPEED: 0,
+            },
+            class: 'robotis_rb100_move',
+            isNotFor: ['Robotis_rb_car'],
+            func: function (sprite, script) {
+                // instruction / address / length / value / default length
+                var speed_level = script.getNumberValue('SPEED', script);
+                
+                var data_instruction = Entry.Robotis_rb.INSTRUCTION.WRITE;
+                var data_address = 5200;
+                var data_length = 1;
+
+                var data_sendqueue = [
+                    [
+                        data_instruction,
+                        data_address,
+                        data_length,
+                        speed_level,
+                    ],
+                ];
+                return Entry.Robotis_carCont.postCallReturn(
+                    script,
+                    data_sendqueue,
+                    Entry.Robotis_openCM70.delay
+                );
+            },
+            syntax: {
+                js: [],
+                py: ['Robotis.rb100_follow_line(%1)'],
+            },
+        },
+        robotis_RCar_turn_at_line: {
+            color: EntryStatic.colorSet.block.default.HARDWARE,
+            outerLine: EntryStatic.colorSet.block.darken.HARDWARE,
+            skeleton: 'basic',
+            statements: [],
+            params: [
+                {
+                    type: 'Dropdown',
+                    options: [
+                        [Lang.Blocks.robotis_moveL_in_place, '0'],
+                        [Lang.Blocks.robotis_moveR_in_place, '1'],
+                        [Lang.Blocks.robotis_moveU_in_place, '2'],
+
+                    ],
+                    value: '0',
+                    fontSize: 11,
+                    bgColor: EntryStatic.colorSet.block.darken.HARDWARE,
+                    arrowColor: EntryStatic.colorSet.arrow.default.HARDWARE,
+                },
+                {
+                    type: 'Indicator',
+                    img: 'block_icon/hardware_icon.svg',
+                    size: 12,
+                },
+            ],
+            events: {},
+            def: {
+                params: [
+                    null,
+                    null,
+                ],
+                type: 'robotis_RCar_turn_at_line',
             },
             paramsKeyMap: {
                 SPEED: 0,
@@ -2954,6 +3038,114 @@ Entry.Robotis_rb_car.getBlocks = function() {
                 py: ['Robotis.get_dxl_value(%1, %2)'],
             },
         },
+        robotis_RCar_line_cross_compare:{
+            color: EntryStatic.colorSet.block.default.HARDWARE,
+            outerLine: EntryStatic.colorSet.block.darken.HARDWARE,
+            fontColor: '#fff',
+            skeleton: 'basic_boolean_field',
+            statements: [],
+            params: [
+                {
+                    type: 'Dropdown',
+                    options: [
+                        [Lang.Blocks.robotis_line_cross_type_0, '0'],
+                        [Lang.Blocks.robotis_line_cross_type_5, '5'],
+                        [Lang.Blocks.robotis_line_cross_type_6, '6'],
+                        [Lang.Blocks.robotis_line_cross_type_7, '7'],
+                        [Lang.Blocks.robotis_line_cross_type_8, '8'],
+                        [Lang.Blocks.robotis_line_cross_type_9, '9'],
+                        [Lang.Blocks.robotis_line_cross_type_10, '10`'],
+                        [Lang.Blocks.robotis_line_cross_type_11, '11'],
+                        [Lang.Blocks.robotis_line_cross_type_12, '12'],
+                        [Lang.Blocks.robotis_line_cross_type_1, '1'],
+                    ],
+                    value: '5',
+                    fontSize: 11,
+                    bgColor: EntryStatic.colorSet.block.darken.HARDWARE,
+                    arrowColor: EntryStatic.colorSet.arrow.default.HARDWARE,
+                },
+            ],
+            events: {},
+            def: {
+                params: [
+                    null,
+                ],
+                type: 'robotis_RCar_line_cross_compare',
+            },
+            paramsKeyMap: {
+                VALUE: 0,
+            },
+            class: 'robotis_rb100_custom',
+            isNotFor: ['Robotis_rb_car'],
+            func: function (sprite, script) {
+                var scope = script.executor.scope;
+
+                // instruction / address / length / value / default length
+                var data_instruction = Entry.Robotis_rb.INSTRUCTION.READ;
+                var data_address = 5031;
+                var data_length = 1;
+                var data_value = 0;
+
+                var data_default_address = 0;
+                var data_default_length = 0;
+                var compareValue = script.getNumberValue('VALUE');
+
+
+                data_default_address = data_address;
+                data_default_length = data_length;
+
+                if (
+                    Entry.hw.sendQueue.prevAddress &&
+                    Entry.hw.sendQueue.prevAddress == data_default_address
+                ) {
+                    if (
+                        Entry.hw.sendQueue.prevTime &&
+                        new Date() - Entry.hw.sendQueue.prevTime < Entry.Robotis_openCM70.readDelay//200
+                    ) {
+                        //throw new Entry.Utils.AsyncError();
+
+                        // return false;
+                        return Entry.hw.sendQueue.prevResult == compareValue;
+                    }
+                }
+
+                Entry.Robotis_carCont.setRobotisData([
+                    [
+                        data_instruction,
+                        data_address,
+                        data_length,
+                        data_value,
+                        data_default_length,
+                    ],
+                ]);
+                // Entry.hw.socket.send(JSON.stringify(Entry.hw.sendQueue));
+                Entry.Robotis_carCont.update();
+
+                var result = Entry.hw.portData[data_default_address];
+                if (result == undefined)
+                {
+                    result = rb100_last_valid_value[data_default_address];
+                }
+                else
+                {
+                    rb100_last_valid_value[data_default_address] = result;
+                }
+                Entry.hw.sendQueue.prevAddress = data_default_address;
+                Entry.hw.sendQueue.prevTime = new Date();
+                Entry.hw.sendQueue.prevResult = result;
+
+                if(result == undefined) {
+                    return false;
+                }
+
+
+                return result == compareValue;
+            },
+            syntax: {
+                js: [],
+                py: ['Robotis.RB_detectSound_compare(%1)'],
+            },
+        },
 
 
 
@@ -3943,7 +4135,7 @@ Entry.Robotis_rb_car.getBlocks = function() {
             events: {},
             def: {
                 params: [
-                    Lang.Blocks.robotis_korean1,
+                    " ",
                     {
                         type: 'number',
                         params: ['0'],
@@ -3956,6 +4148,261 @@ Entry.Robotis_rb_car.getBlocks = function() {
                     null,
                 ],
                 type: 'robotis_RCar_text_screen',
+            },
+            paramsKeyMap: {
+                TEXT: 0,
+                X: 1,
+                Y: 2,
+                FONT: 3,
+                COLOR: 4,
+            },
+            class: 'robotis_rb100_lcd',
+            isNotFor: ['Robotis_rb_car'],
+            func: function (sprite, script) {
+                // instruction / address / length / value / default length
+                var text = script.getStringValue('TEXT', script);
+                var x = script.getNumberValue('X', script);
+                var y = script.getNumberValue('Y', script);
+                var font = script.getNumberValue('FONT', script);
+                var color = script.getNumberValue('COLOR', script);
+                var data_buf = [];
+                var i = 0;
+                
+                var data_instruction = Entry.Robotis_rb.INSTRUCTION.WRITE;
+                var data_address = 166;
+                var data_length = 2;
+                var data_value = 10496;
+            
+                if (x < -160) x = -160;
+                else if (x > 160) x = 160;
+                
+                if (y < -120) y = -120;
+                else if (y > 120) y = 120;
+                
+                var encoder = new TextEncoder('utf-8');
+                var byteArray = encoder.encode(text);
+
+                data_buf.push(x % 256);
+                data_buf.push(Math.floor(x/256));
+                data_buf.push(y % 256);
+                data_buf.push(Math.floor(y/256));
+                data_buf.push(font);
+                data_buf.push(color);
+                data_buf.push(byteArray.length);
+                for (i = 0; i < byteArray.length; i++) {
+                    data_buf.push(byteArray[i]);
+                }
+               
+                var data_instruction = Entry.Robotis_rb.INSTRUCTION.WRITE;
+                var data_address = 900;
+                var data_length = 7 + byteArray.length;
+
+                var data_sendqueue = [
+                    [
+                        data_instruction,
+                        data_address,
+                        data_length,
+                        data_buf,
+                    ],
+                    [
+                        Entry.Robotis_rb.INSTRUCTION.WRITE, 162, 1, 1
+                    ]
+                ];
+                
+                return Entry.Robotis_carCont.postCallReturn(
+                    script,
+                    data_sendqueue,
+                    Entry.Robotis_openCM70.delay + 100
+                );
+            },
+            syntax: {
+                js: [],
+                py: ['Robotis.RB_text_screen(%1,%2,%3,%4)'],
+            },
+        },
+        robotis_RCar_pixel: {
+            color: EntryStatic.colorSet.block.default.HARDWARE,
+            outerLine: EntryStatic.colorSet.block.darken.HARDWARE,
+            skeleton: 'basic',
+            statements: [],
+            params: [
+                {
+                    type: 'Block',
+                    accept: 'string',
+                },
+                {
+                    type: 'Block',
+                    accept: 'string',
+                },
+                {
+                    type: 'Dropdown',
+                    options: [
+                        [Lang.Blocks.robotis_red, '224'],
+                        [Lang.Blocks.robotis_orange, '244'],
+                        [Lang.Blocks.robotis_yellow, '252'],
+                        [Lang.Blocks.robotis_green, '28'],
+                        [Lang.Blocks.robotis_blue, '3'],
+                        [Lang.Blocks.robotis_darkblue, '2'],
+                        [Lang.Blocks.robotis_purple, '130'],
+                        [Lang.Blocks.robotis_brown, '173'],
+                        [Lang.Blocks.robotis_black, '0'],
+                        [Lang.Blocks.robotis_white, '255'],
+                    ],
+                    value: '0',
+                    fontSize: 11,
+                    bgColor: EntryStatic.colorSet.block.darken.HARDWARE,
+                    arrowColor: EntryStatic.colorSet.arrow.default.HARDWARE,
+                },
+                {
+                    type: 'Indicator',
+                    img: 'block_icon/hardware_icon.svg',
+                    size: 12,
+                },
+            ],
+            events: {},
+            def: {
+                params: [
+                    {
+                        type: 'number',
+                        params: ['0'],
+                    },
+                    {
+                        type: 'number',
+                        params: ['0'],
+                    },
+                    null,
+                ],
+                type: 'robotis_RCar_pixel',
+            },
+            paramsKeyMap: {
+                TEXT: 0,
+                X: 1,
+                Y: 2,
+                FONT: 3,
+                COLOR: 4,
+            },
+            class: 'robotis_rb100_lcd',
+            isNotFor: ['Robotis_rb_car'],
+            func: function (sprite, script) {
+                // instruction / address / length / value / default length
+                var text = script.getStringValue('TEXT', script);
+                var x = script.getNumberValue('X', script);
+                var y = script.getNumberValue('Y', script);
+                var font = script.getNumberValue('FONT', script);
+                var color = script.getNumberValue('COLOR', script);
+                var data_buf = [];
+                var i = 0;
+                
+                var data_instruction = Entry.Robotis_rb.INSTRUCTION.WRITE;
+                var data_address = 166;
+                var data_length = 2;
+                var data_value = 10496;
+            
+                if (x < -160) x = -160;
+                else if (x > 160) x = 160;
+                
+                if (y < -120) y = -120;
+                else if (y > 120) y = 120;
+                
+                var encoder = new TextEncoder('utf-8');
+                var byteArray = encoder.encode(text);
+
+                data_buf.push(x % 256);
+                data_buf.push(Math.floor(x/256));
+                data_buf.push(y % 256);
+                data_buf.push(Math.floor(y/256));
+                data_buf.push(font);
+                data_buf.push(color);
+                data_buf.push(byteArray.length);
+                for (i = 0; i < byteArray.length; i++) {
+                    data_buf.push(byteArray[i]);
+                }
+               
+                var data_instruction = Entry.Robotis_rb.INSTRUCTION.WRITE;
+                var data_address = 900;
+                var data_length = 7 + byteArray.length;
+
+                var data_sendqueue = [
+                    [
+                        data_instruction,
+                        data_address,
+                        data_length,
+                        data_buf,
+                    ],
+                    [
+                        Entry.Robotis_rb.INSTRUCTION.WRITE, 162, 1, 1
+                    ]
+                ];
+                
+                return Entry.Robotis_carCont.postCallReturn(
+                    script,
+                    data_sendqueue,
+                    Entry.Robotis_openCM70.delay + 100
+                );
+            },
+            syntax: {
+                js: [],
+                py: ['Robotis.RB_text_screen(%1,%2,%3,%4)'],
+            },
+        },
+        robotis_RCar_text_screen_redraw: {
+            color: EntryStatic.colorSet.block.default.HARDWARE,
+            outerLine: EntryStatic.colorSet.block.darken.HARDWARE,
+            skeleton: 'basic',
+            statements: [],
+            params: [
+                {
+                    type: 'Block',
+                    accept: 'string',
+                },
+                {
+                    type: 'Block',
+                    accept: 'string',
+                },
+                {
+                    type: 'Block',
+                    accept: 'string',
+                },
+                {
+                    type: 'Dropdown',
+                    options: [
+                        [Lang.Blocks.robotis_red, '224'],
+                        [Lang.Blocks.robotis_orange, '244'],
+                        [Lang.Blocks.robotis_yellow, '252'],
+                        [Lang.Blocks.robotis_green, '28'],
+                        [Lang.Blocks.robotis_blue, '3'],
+                        [Lang.Blocks.robotis_darkblue, '2'],
+                        [Lang.Blocks.robotis_purple, '130'],
+                        [Lang.Blocks.robotis_brown, '173'],
+                        [Lang.Blocks.robotis_black, '0'],
+                        [Lang.Blocks.robotis_white, '255'],
+                    ],
+                    value: '0',
+                    fontSize: 11,
+                    bgColor: EntryStatic.colorSet.block.darken.HARDWARE,
+                    arrowColor: EntryStatic.colorSet.arrow.default.HARDWARE,
+                },
+                {
+                    type: 'Indicator',
+                    img: 'block_icon/hardware_icon.svg',
+                    size: 12,
+                },
+            ],
+            events: {},
+            def: {
+                params: [
+                    " ",
+                    {
+                        type: 'number',
+                        params: ['0'],
+                    },
+                    {
+                        type: 'number',
+                        params: ['0'],
+                    },
+                    null,
+                ],
+                type: 'robotis_RCar_text_screen_redraw',
             },
             paramsKeyMap: {
                 TEXT: 0,
