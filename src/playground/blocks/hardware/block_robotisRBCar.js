@@ -1617,6 +1617,18 @@ Entry.Robotis_rb_car.getBlocks = function() {
                 var data_instruction = Entry.Robotis_rb.INSTRUCTION.WRITE;
                 var data_address = 66;
                 var data_length = 2;
+                let extra_delay = 0;
+
+                switch (turn_type) {
+                    case 0:
+                    case 1:
+                        extra_delay = 2000;
+                        break;
+                        
+                    case 2:
+                        extra_delay = 3500;
+                        break;
+                }
 
                 var data_sendqueue = [
                     [
@@ -1629,7 +1641,7 @@ Entry.Robotis_rb_car.getBlocks = function() {
                 return Entry.Robotis_carCont.postCallReturn(
                     script,
                     data_sendqueue,
-                    Entry.Robotis_openCM70.delay
+                    Entry.Robotis_openCM70.delay + extra_delay,
                 );
             },
             syntax: {
@@ -3197,7 +3209,7 @@ Entry.Robotis_rb_car.getBlocks = function() {
 
                 // instruction / address / length / value / default length
                 var data_instruction = Entry.Robotis_rb.INSTRUCTION.READ;
-                var data_address = 5031;
+                var data_address = 5201;
                 var data_length = 1;
                 var data_value = 0;
 
