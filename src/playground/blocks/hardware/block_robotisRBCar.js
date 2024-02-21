@@ -1879,15 +1879,16 @@ Entry.Robotis_rb_car.getBlocks = function() {
                         new Date() - Entry.hw.sendQueue.prevTime < 200//Entry.Robotis_openCM70.readDelay//200
                     ) {
                         //throw new Entry.Utils.AsyncError();
+                        let prevResult = Math.round((Entry.hw.sendQueue.prevResult % 65536) / 4);
                 
                         //  return false;
                         switch(compareOP) {
                             case 0:
-                                return Entry.hw.sendQueue.prevResult > compareValue;
+                                return prevResult > compareValue;
                             case 1:
-                                return Entry.hw.sendQueue.prevResult < compareValue;
+                                return prevResult < compareValue;
                             case 2:
-                                return Entry.hw.sendQueue.prevResult == compareValue;
+                                return prevResult == compareValue;
                             default:
                                 return false;
                         }
