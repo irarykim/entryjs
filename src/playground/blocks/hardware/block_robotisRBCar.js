@@ -1475,10 +1475,10 @@ Entry.Robotis_rb_car.getBlocks = function() {
 
                 angle *= direction;
 
-                if(angle > 180) {
-                    angle = 180;
-                } else if(angle < -180) {
-                    angle = -180;
+                if(angle > 360) {
+                    angle = 360;
+                } else if(angle < -360) {
+                    angle = -360;
                 }
 
                 var data_instruction = Entry.Robotis_rb.INSTRUCTION.WRITE;
@@ -1501,7 +1501,7 @@ Entry.Robotis_rb_car.getBlocks = function() {
                 return Entry.Robotis_carCont.postCallReturn(
                     script,
                     data_sendqueue,
-                    Entry.Robotis_openCM70.delay + 2000*(Math.abs(angle) / 90) + 1000
+                    Entry.Robotis_openCM70.delay + Math.abs(angle) * 5500 / 360 + 500
                     //Entry.Robotis_openCM70.delay
                 );
             },
